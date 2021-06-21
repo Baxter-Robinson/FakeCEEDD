@@ -25,7 +25,7 @@ if `"`c(os)'"' == "Windows"   global   stem  `"D:/Dropbox/"'
 *global   stem  `"D:/Dropbox/"'
 
 
-cd "${stem}Shared-Folder_Baxter-Ali/RA-Work/Project-01_Fake-Data"
+cd "${stem}Shared-Folder_Baxter-Ali/FakeCEEDD"
 
 *----------------
 * Clean Data
