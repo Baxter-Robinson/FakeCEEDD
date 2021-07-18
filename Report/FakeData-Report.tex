@@ -1,0 +1,66 @@
+\documentclass[12pt,notitlepage]{article}
+%\usepackage[margin=1in]{geometry}
+%	\geometry{
+%	top=20mm,
+%	bottom=20mm,
+%	}
+\usepackage[margin=1in]{geometry}              
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{amsmath, amsthm, amssymb, centernot}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{comment}
+\newcommand{\sym}[1] {\ifmmode^{#1} \else\(^{#1}\) \fi}
+
+\DeclareMathOperator{\plim}{plim}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\setlength\parindent{0pt}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{plain}
+\title{Fake CEEDD Data Report}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+
+
+
+%------------------------------------------------------------------------------
+\FloatBarrier
+\section{Total Income Deciles} % (fold)
+\label{sec:total_income_deciles}
+\FloatBarrier
+%------------------------------------------------------------------------------
+
+
+
+\begin{figure}[!htpb]
+\centering
+\caption{Proportion of Entrepreneurs}
+ \includegraphics[scale=0.8]{../Output/Graphs/Graph_TotIncDec_PropEntr.pdf}
+
+\end{figure}
+
+
+
+% section total_income_deciles (end)
+
+\end{document}

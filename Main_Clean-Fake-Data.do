@@ -18,12 +18,12 @@ global nObs=5000
 
 * Baxter PATH
 *if `"`c(os)'"' == "MacOSX"   global   stem    `"/Users/Baxter/Dropbox/"'
-*if `"`c(os)'"' == "Windows"   global   stem  `"D:/Dropbox/"'
-*cd "${stem}Files/Economics-Research/Project-04_CDRE/Data_FakeCEEDD/"
+if `"`c(os)'"' == "Windows"   global   stem  `"D:/Dropbox/"'
+cd "${stem}Files/Economics-Research/Project-04_CDRE/Data_FakeCEEDD/"
 
 * Ali PATH
-global   stem  `"C:\Users\Admin\Dropbox\Shared-Folder_Baxter-Ali"'
-cd "${stem}\FakeCEEDD" 
+*global   stem  `"C:\Users\Admin\Dropbox\Shared-Folder_Baxter-Ali"'
+*cd "${stem}\FakeCEEDD" 
 
 *----------------
 * Clean Data
@@ -60,13 +60,6 @@ rename v110 labour_Income
 
 gen tot_inc = profits + labour_Income
 
-* saves the cleaned dataset 
-
-save Data_Cleaned/Cleaned.dta, replace
-
-* creates the detailed summary statistics tables 
-
-summ entrep_status profits labour_Income firm_Age , detail
 
 * finds the moving averages of different measures of income based on the prior three years incomes
 sort individual_ID year
@@ -79,6 +72,16 @@ bysort individual_ID: gen avg_lab_inc_3=(labour_Income[_n-1] + labour_Income[_n-
 xtile dec_tot_inc = avg_tot_inc_3, nq(10)
 xtile dec_cap_inc = avg_cap_inc_3, nq(10)
 xtile dec_lab_inc = avg_lab_inc_3, nq(10)
+
+
+* saves the cleaned dataset 
+
+save Data_Cleaned/Cleaned.dta, replace
+
+* creates the detailed summary statistics tables 
+
+summ entrep_status profits labour_Income firm_Age , detail
+
 
 * computes the fraction of entreprenuers in each decile of total income (proportion)
 

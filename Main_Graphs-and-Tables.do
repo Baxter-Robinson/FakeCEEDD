@@ -17,18 +17,20 @@ global nObs=5000
 
 
 * Baxter PATH
-if `"`c(os)'"' == "MacOSX"   global   stem    `"/Users/Baxter/Dropbox/"'
+*if `"`c(os)'"' == "MacOSX"   global   stem    `"/Users/Baxter/Dropbox/"'
 if `"`c(os)'"' == "Windows"   global   stem  `"D:/Dropbox/"'
+cd "${stem}Files/Economics-Research/Project-04_CDRE/Data_FakeCEEDD/"
+
 
 
 * Ali PATH
 *global   stem  `"D:/Dropbox/"'
 
 
-cd "${stem}Shared-Folder_Baxter-Ali/FakeCEEDD"
+use "Data_Cleaned/Cleaned.dta"
 
 *----------------
 * Graphs and Tables
 *----------------
 
-do Graph_CapInc.do
+do Graphs_TotInc.do
