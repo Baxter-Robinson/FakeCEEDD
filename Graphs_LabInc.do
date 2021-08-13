@@ -20,9 +20,6 @@ restore
 preserve
 
 *Probability of transitioning into Entrepreneurship (Labour income)
-gen NewBusiness=0
-replace NewBusiness=1 if firm_Age==1 & entrep_status==1
-
 
 collapse (mean) NewBusiness , by(dec_lab_inc)
 
@@ -35,7 +32,7 @@ restore
 preserve
 *Average employment (Labour income)
 
-collapse (mean) employment , by(dec_lab_inc)
+collapse (mean) employment if entrep_status==1 , by(dec_lab_inc)
 
 twoway (scatter employment dec_lab_inc, connect(l)) , xtitle("Deciles of Labour Income")  ytitle("Average employment") legend(off)  graphregion(color(white))
 
@@ -46,11 +43,6 @@ restore
 preserve
 
 *Survival rate-5years (Labour income)
-sort individual_ID year
-
-gen SurvivedFrim=0
-
-bysort individual_ID: replace SurvivedFrim=1 if firm_Age[_n]==1 & firm_Age[_n+5]==6
 
 collapse (mean) SurvivedFrim , by(dec_lab_inc)
 
