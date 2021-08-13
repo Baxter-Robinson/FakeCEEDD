@@ -7,8 +7,6 @@ global   stem  `"C:\Users\Admin\Dropbox\Shared-Folder_Baxter-Ali"'
 cd "${stem}\FakeCEEDD" 
 
 use  Data_Cleaned/Cleaned.dta
-gen NewBusiness=0
-replace NewBusiness=1 if firm_Age==1 & entrep_status==1
 
 preserve
 
@@ -34,7 +32,7 @@ restore
 preserve
 *Average employment (Capital income)
 
-collapse (mean) employment , by(dec_cap_inc)
+collapse (mean) employment if entrep_status==1 , by(dec_cap_inc)
 
 twoway (scatter employment dec_cap_inc, connect(l)) , xtitle("Deciles of Capital Income")  ytitle("Average employment") legend(off)  graphregion(color(white))
 
@@ -45,11 +43,6 @@ restore
 preserve
 
 *Survival rate-5years (Capital income)
-sort individual_ID year
-
-gen SurvivedFrim=0
-
-bysort individual_ID: replace SurvivedFrim=1 if firm_Age[_n]==1 & firm_Age[_n+5]==6
 
 collapse (mean) SurvivedFrim , by(dec_cap_inc)
 
